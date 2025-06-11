@@ -30,20 +30,35 @@ The model's code is almost equal to the original one in its respective repositor
 
 ---
 
-## Features
+## Code
 
-- **Multiple GNN autoencoder models**: Compare ChebNet, GAT, and GCN based autoencoders.
-- **Flexible preprocessing**: Includes graph data preparation and feature engineering.
-- **Training and evaluation**: Easily train models and evaluate performance on given datasets.
-- **Embedding projection**: Additional embedding manipulation via the projector module.
+In the project structure section, just the relevant parts were included. 
+Since the code incorporates code from four different projects, there are many files that are not relevant for this project.
+
+The compiled models are from different repositories, all of them created in different years with different library versions.
+This makes it impossible to join all of them under one environment in a reasonable amount of time.
+Therefore, each of the reviewed models includes its own environment and libraries.
+The code for training, fine-tuning and sampling should be undergone under the correspondant environment for each model.
+Special caution must be taken when setting the environments for each model since even the slightest change may impede the correct functioning of the process.
+
+The changes made to the original code are minimal and limited to adapting functionality to non-available libraries or correcting minor mistakes.
+
+Knowing the great complexity that executing the models may take and given that anyway the comparison tests should be executed on a separate environment, the sampled molecules for each model have been saved.
+This way executing the `main.py` is enough for running the metric calculation.
+
 
 ---
 
 ## Usage
 - Running `main.py` is enough to run all the training and the test battery.
 
-## Contact
-amadrian@korea.ac.kr
+### GraphRNN
+
+### CCGVAE
+
+### MolGAN
+
+### DiGress
 
 ## References
 [1]	J. You, R. Ying, X. Ren, W. Hamilton, and J. Leskovec, “GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models,” in Proceedings of the 35th International Conference on Machine Learning, PMLR, Jul. 2018, pp. 5708–5717.
@@ -54,3 +69,5 @@ amadrian@korea.ac.kr
 
 [4]	C. Vignac, I. Krawczuk, A. Siraudin, B. Wang, V. Cevher, and P. Frossard, “DiGress: Discrete Denoising diffusion for graph generation,” presented at the The Eleventh International Conference on Learning Representations, Sep. 2022.
 
+## Contact
+amadrian@korea.ac.kr
