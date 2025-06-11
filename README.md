@@ -17,8 +17,12 @@ The model's code is almost equal to the original one in its respective repositor
 ## Project Structure
 ```
 ├── models/
-    ├── __init__.py
+│   ├── __init__.py
 │   ├── ConditionalCGVAE-master     # CCGVAE model
+│   │   ├──data
+│   │   │   └──make_dataset.py      # File for constructing the dataset.
+│   │   ├──CCGVAE.py                # Main script of the CCGVAE model.
+│   │   └── setup.bash              # Bash for automatic creation of the environment.  
 │   ├── DiGress-main                # DiGress model
 │   ├── graph-generation-master     # GraphRNN model
 │   └── MolGAN                      # MolGAN model
@@ -54,11 +58,29 @@ This way executing the `main.py` is enough for running the metric calculation.
 
 ### GraphRNN
 
+```bash
+    CUDA_VISIBLE_DEVICES=6 python3 main.py
+```
+
 ### CCGVAE
+- Excuting the `setup.bash` will set-up the environment.
+- Then the execution of the model is (generation is 0 for training, 1 for generating, 2 for reconstructing):
+```bash
+    CUDA_VISIBLE_DEVICES=1 python CCGVAE.py --dataset qm9 --config '{"generation":0, "log_dir":"./results", "use_mask":false}'
+```
 
 ### MolGAN
 
+```bash
+    CUDA_VISIBLE_DEVICES=7 python3 main.py 
+```
+
 ### DiGress
+
+```bash
+    CUDA_VISIBLE_DEVICES=1 python3 main.py dataset=qm9
+```
+
 
 ## References
 [1]	J. You, R. Ying, X. Ren, W. Hamilton, and J. Leskovec, “GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models,” in Proceedings of the 35th International Conference on Machine Learning, PMLR, Jul. 2018, pp. 5708–5717.
