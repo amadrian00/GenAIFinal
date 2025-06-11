@@ -63,26 +63,27 @@ This way executing the `main.py` is enough for running the metric calculation.
 - Running `main.py` is enough to run all the training and the test battery.
 
 ### GraphRNN
-
+- Creating an environment using the `environment.yml` will set up the environment.
+- Then executing:
 ```bash
     CUDA_VISIBLE_DEVICES=6 python3 main.py
 ```
 
 ### CCGVAE
-- Excuting the `setup.bash` will set-up the environment.
+- Excuting the `setup.bash` will set up the environment.
 - Then the execution of the model is (generation is 0 for training, 1 for generating, 2 for reconstructing):
 ```bash
     CUDA_VISIBLE_DEVICES=1 python CCGVAE.py --dataset qm9 --config '{"generation":0, "log_dir":"./results", "use_mask":false}'
 ```
 
 ### MolGAN
-
+- Creating an environment using the `environment.yml` will set up the environment.
+- Then executing:
 ```bash
     CUDA_VISIBLE_DEVICES=7 python3 main.py 
 ```
 
 ### DiGress
-
 - The creation of the environment is a bit more complex, so I refer to the original repository where it is explained in detail (https://github.com/cvignac/DiGress/tree/main).
 - Then executing as:
 ```bash
