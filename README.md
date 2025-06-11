@@ -19,13 +19,19 @@ The model's code is almost equal to the original one in its respective repositor
 ├── models/
 │   ├── __init__.py
 │   ├── ConditionalCGVAE-master     # CCGVAE model
-│   │   ├──data
-│   │   │   └──make_dataset.py      # File for constructing the dataset.
-│   │   ├──CCGVAE.py                # Main script of the CCGVAE model.
+│   │   ├── data
+│   │   │   └── make_dataset.py     # File for constructing the dataset.
+│   │   ├── CCGVAE.py               # Main script of the CCGVAE model.
 │   │   └── setup.bash              # Bash for automatic creation of the environment.  
 │   ├── DiGress-main                # DiGress model
+│   │   └── src
+│   │      └── main.py              # Main script of the CCGVAE model.
 │   ├── graph-generation-master     # GraphRNN model
+│   │   ├── environment.yml         # Environment configuration.
+│   │   └── main.py                 # Main script of the CCGVAE model.
 │   └── MolGAN                      # MolGAN model
+│       ├── environment.yml         # Environment configuration.
+│       └── main.py                 # Main script of the MolGAN model.
 │
 ├── main.py                         # Main script to perform evaluation of the models.
 ├── metrics.py                      # Definition of the validity, uniqueness and novelty metrics.
@@ -77,6 +83,8 @@ This way executing the `main.py` is enough for running the metric calculation.
 
 ### DiGress
 
+- The creation of the environment is a bit more complex, so I refer to the original repository where it is explained in detail (https://github.com/cvignac/DiGress/tree/main).
+- Then executing as:
 ```bash
     CUDA_VISIBLE_DEVICES=1 python3 main.py dataset=qm9
 ```
