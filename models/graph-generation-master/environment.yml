@@ -1,0 +1,23 @@
+name: modern-nlp-env
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - gensim
+  - smart_open
+  - pandas
+  - numpy
+  - networkx
+  - scikit-learn
+  - jupyterlab
+  - matplotlib
+  - pip
+  - tensorboard
+  - python-louvain
+  - pip:
+    - torch
+    - torchvision
+    - torchaudio
+    - torch-geometric
