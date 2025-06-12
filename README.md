@@ -56,8 +56,10 @@ The code for training, fine-tuning and sampling should be undergone under the co
 Special caution must be taken when setting the environments for each model since even the slightest change may impede the correct functioning of the process.
 
 The changes made to the original code are minimal and limited to adapting functionality to non-available libraries or correcting minor mistakes.
+The environment of CCGVAE is specially sensible to library changes, if there is any error while executing it means that some dependency is not correctly installed.
+This is why a setup script is provided for this model; nevertheless, depending on the local machine, some unexpected errors may arise.
 
-Knowing the great complexity that executing the models may take and given that anyway the comparison tests should be executed on a separate environment, the sampled molecules for each model have been saved.
+Knowing the great complexity that executing the models may take and given that anyway, the comparison tests should be executed in a separate environment, the sampled molecules for each model have been saved.
 This way executing the `main.py` is enough for running the metric calculation.
 
 
@@ -79,6 +81,8 @@ CUDA_VISIBLE_DEVICES=6 python3 main.py
 ```bash
 CUDA_VISIBLE_DEVICES=1 python CCGVAE.py --dataset qm9 --config '{"generation":0, "log_dir":"./results", "use_mask":false}'
 ```
+
+- Training is quite costly and takes a lot of time, therefore, the results are presented for a minimally trained model due to time constraints.
 
 ### MolGAN
 - Creating an environment using the `environment.yml` will set up the environment.
