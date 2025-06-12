@@ -57,6 +57,7 @@ The code for training, fine-tuning and sampling should be undergone under the co
 Special caution must be taken when setting the environments for each model since even the slightest change may impede the correct functioning of the process.
 
 The changes made to the original code are minimal and limited to adapting functionality to non-available libraries or correcting minor mistakes.
+Though the changes are just minor, the task of understanding, adapting and making function the code from the diverse set of models is not trivial.
 The environment of CCGVAE is specially sensible to library changes, if there is any error while executing it means that some dependency is not correctly installed.
 This is why a setup script is provided for this model; nevertheless, depending on the local machine, some unexpected errors may arise.
 
