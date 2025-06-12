@@ -2,7 +2,7 @@ import numpy as np
 from tensorflow import keras
 from utils import smiles_to_graph
 from rdkit.Chem import MolToSmiles
-from rdkit.Chem.Draw import MolsToGridImage, MolToImage
+from rdkit.Chem.Draw import MolsToGridImage
 
 from model import GraphWGAN
 
