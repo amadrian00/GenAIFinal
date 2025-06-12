@@ -43,5 +43,6 @@ if __name__ == "__main__":
 
     with Chem.SDWriter(f'graphs/generated_molecules.sdf') as writer:
         for mol in molecules:
-            writer.write(mol)
+            if mol is not None:
+                writer.write(mol)
 
