@@ -65,7 +65,7 @@ class CCGVAE(ChemModel):
             "qed_trade_off_lambda": 10,  # originale 10
             'prior_learning_rate': 0.05,
             'stop_criterion': 0.01,
-            'num_epochs': 2,
+            'num_epochs': 10,
             'num_teacher_forcing': 1000,
             'number_of_generation': 2000,
             'optimization_step': 0,
