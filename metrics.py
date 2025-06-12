@@ -1,12 +1,14 @@
 import torch
 from utils import load_smiles
+from rdkit import RDLogger
 from rdkit.Chem import RWMol, SanitizeMol, SanitizeFlags, rdchem, MolFromSmiles
 
+RDLogger.DisableLog('rdApp.*')
 qm9_smiles = set(load_smiles('models/ConditionalCGVAE-master/data/qm9.smi'))
 
 # Eval helpers
 def is_valid(mol):
-    return mol is not None and SanitizeMol(mol, catchErrors=True) == SanitizeFlags.SANITIZE_NONE
+    return mol is not None and SanitizeMol(mol, catchErrors=False) == SanitizeFlags.SANITIZE_NONE
 
 def mol_from_graph(adj_matrix):
     if not isinstance(adj_matrix, torch.Tensor):
