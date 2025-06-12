@@ -22,7 +22,7 @@ if __name__ == "__main__":
         adjacency_tensor.append(adjacency)
         feature_tensor.append(features)
 
-    wgan = GraphWGAN(discriminator_steps=2)
+    wgan = GraphWGAN(discriminator_steps=1)
 
     wgan.compile(
         optimizer_generator=keras.optimizers.Adam(5e-4),
