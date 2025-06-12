@@ -16,7 +16,7 @@ def load_smiles(path):
 def load_graphs(model):
     res = None
     if model=='GraphRNN':
-        with open('models/graph-generation-master/graphs/GraphRNN_RNN_qm9_4_128_pred_1000_1.dat', "rb") as f:
+        with open('models/graph-generation-master/graphs/GraphRNN_RNN_qm9_4_128_pred_3000_1.dat', "rb") as f:
             graphs = pickle.load(f)
 
         res = []
