@@ -2,17 +2,6 @@ cluster/*
 
 .idea/*
 
-data/*.smi
-data/*.json
-data/*.pkl
-
-histogramAnalysis/*.png
-
-utils/fpscores.pkl.gz
-utils/sascorer.py
-
-results/*
-
 *__*__/*
 *.pyc
 tmp/*

@@ -15,9 +15,7 @@ figures_prediction/
 
 **/bin/
 **/build/
-model_save/
 logs/
-graphs/
 eval_results/
 tensorboard/
 timing/
