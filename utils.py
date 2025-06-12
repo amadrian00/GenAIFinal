@@ -25,7 +25,7 @@ def load_graphs(model):
             node_idx_map = {}
 
             for node in G.nodes:
-                atom = Atom('C')
+                atom = Atom(random.choice(['C', 'F', 'N']))
                 idx = mol.AddAtom(atom)
                 node_idx_map[node] = idx
 
@@ -48,6 +48,5 @@ def load_graphs(model):
 
     elif model=='DiGress':
         res = load_smiles('models/DiGress-main/outputs/2025-06-09/00-46-36-graph-tf-model/final_smiles.txt')
-
     return res
 
