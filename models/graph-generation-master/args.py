@@ -39,7 +39,7 @@ class Args():
 
         self.batch_size = 32 # normal: 32, and the rest should be changed accordingly
         self.test_batch_size = 32
-        self.test_total_size = 1000
+        self.test_total_size = 10000
         self.num_layers = 4
 
         ### training config

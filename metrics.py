@@ -1,5 +1,8 @@
 import torch
-from rdkit.Chem import RWMol, SanitizeMol, SanitizeFlags, rdchem, MolToSmiles
+from utils import load_smiles
+from rdkit.Chem import RWMol, SanitizeMol, SanitizeFlags, rdchem, MolFromSmiles
+
+qm9_smiles = set(load_smiles('models/ConditionalCGVAE-master/data/qm9.smi'))
 
 # Eval helpers
 def is_valid(mol):
@@ -24,12 +27,12 @@ def mol_from_graph(adj_matrix):
         return None
 
 
-def evaluate_all(generated_graphs, qm9_smiles):
-    mols = [mol_from_graph(g) for g in generated_graphs]
-    valid_mols = [m for m in mols if is_valid(m)]
-    unique_mols = set(MolToSmiles(m) for m in valid_mols)
+def evaluate_all(smiles):
+    valid_mols = [s for s in smiles if s !='None' and is_valid(MolFromSmiles(s))]
 
-    validity = len(valid_mols) / len(mols)
+    unique_mols = set(smiles)
+
+    validity = len(valid_mols) / 10000
     uniqueness = len(unique_mols) / len(valid_mols) if valid_mols else 0.0
     novelty = len([s for s in unique_mols if s not in qm9_smiles]) / len(unique_mols) if unique_mols else 0.0
 

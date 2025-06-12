@@ -1,7 +1,7 @@
 import numpy as np
-from rdkit import Chem
 from tensorflow import keras
 from utils import smiles_to_graph
+from rdkit.Chem import MolToSmiles
 from rdkit.Chem.Draw import MolsToGridImage, MolToImage
 
 from model import GraphWGAN
@@ -16,19 +16,13 @@ if __name__ == "__main__":
         for line in f.readlines()[1:]:
             data.append(line.split(",")[1])
 
-    smiles = data[1000]
-    molecule = Chem.MolFromSmiles(smiles)
-    MolToImage(molecule).save('mol.png')
-    print("SMILES:", smiles)
-    print("Num heavy atoms:", molecule.GetNumHeavyAtoms())
-
     adjacency_tensor, feature_tensor = [], []
     for smiles in data:
         adjacency, features = smiles_to_graph(smiles)
         adjacency_tensor.append(adjacency)
         feature_tensor.append(features)
 
-    wgan = GraphWGAN(discriminator_steps=1)
+    wgan = GraphWGAN(discriminator_steps=2)
 
     wgan.compile(
         optimizer_generator=keras.optimizers.Adam(5e-4),
@@ -41,8 +35,9 @@ if __name__ == "__main__":
         [m for m in molecules if m is not None][:25], molsPerRow=5, subImgSize=(150, 150)
     ).save('generated_mol.png')
 
-    with Chem.SDWriter(f'graphs/generated_molecules.sdf') as writer:
+    with open('graphs/generated_molecules.smi', 'w') as f:
         for mol in molecules:
             if mol is not None:
-                writer.write(mol)
+                smiles = MolToSmiles(mol)
+                f.write(smiles + '\n')
 

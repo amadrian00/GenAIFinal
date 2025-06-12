@@ -68,6 +68,9 @@ This way executing the `main.py` is enough for running the metric calculation.
 ---
 
 ## Usage
+- In an environment with `Python 3.9` installing the libraries in `requirements.txt` is enough to set up the main environment.
+- pip3 install torch torchvision torchaudio
+- pip3 install rdkit
 - Running `main.py` is enough to run all the training and the test battery.
 
 ### GraphRNN
