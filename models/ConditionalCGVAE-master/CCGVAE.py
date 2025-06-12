@@ -65,9 +65,9 @@ class CCGVAE(ChemModel):
             "qed_trade_off_lambda": 10,  # originale 10
             'prior_learning_rate': 0.05,
             'stop_criterion': 0.01,
-            'num_epochs': 50,
-            'num_teacher_forcing': 1000 if dataset == 'zinc' else 1000,
-            'number_of_generation': 20000,
+            'num_epochs': 2,
+            'num_teacher_forcing': 1000,
+            'number_of_generation': 2000,
             'optimization_step': 0,
             'maximum_distance': 50,
             "use_argmax_nodes": False,  # use random sampling or argmax during node sampling

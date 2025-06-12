@@ -18,24 +18,27 @@ The model's code is almost equal to the original one in its respective repositor
 ```
 ├── models/
 │   ├── __init__.py
-│   ├── ConditionalCGVAE-master     # CCGVAE model
+│   ├── ConditionalCGVAE-master             # CCGVAE model
 │   │   ├── data
-│   │   │   └── make_dataset.py     # File for constructing the dataset.
-│   │   ├── CCGVAE.py               # Main script of the CCGVAE model.
-│   │   └── setup.bash              # Bash for automatic creation of the environment.  
-│   ├── DiGress-main                # DiGress model
+│   │   │   └── make_dataset.py             # File for constructing the dataset.
+│   │   ├── CCGVAE.py                       # Main script of the CCGVAE model.
+│   │   └── setup.bash                      # Bash for automatic creation of the environment.  
+│   ├── DiGress-main                        # DiGress model
 │   │   └── src
-│   │      └── main.py              # Main script of the CCGVAE model.
-│   ├── graph-generation-master     # GraphRNN model
-│   │   ├── environment.yml         # Environment configuration.
-│   │   └── main.py                 # Main script of the CCGVAE model.
-│   └── MolGAN                      # MolGAN model
-│       ├── environment.yml         # Environment configuration.
-│       └── main.py                 # Main script of the MolGAN model.
+│   │      └── main.py                      # Main script of the CCGVAE model.
+│   ├── graph-generation-master             # GraphRNN model
+│   │   ├── graphs                          # Generated graphs folder
+│   │   ├── environment.yml                 # Environment configuration.
+│   │   └── main.py                         # Main script of the CCGVAE model.
+│   └── MolGAN                              # MolGAN model
+│       ├── graphs
+│       │   └── generated_molecules.sdf     # Saved graphs
+│       ├── environment.yml                 # Environment configuration.
+│       └── main.py                         # Main script of the MolGAN model.
 │
-├── main.py                         # Main script to perform evaluation of the models.
-├── metrics.py                      # Definition of the validity, uniqueness and novelty metrics.
-└── README.md                       # Project documentation
+├── main.py                                 # Main script to perform evaluation of the models.
+├── metrics.py                              # Definition of the validity, uniqueness and novelty metrics.
+└── README.md                               # Project documentation
 ```
 
 ---
