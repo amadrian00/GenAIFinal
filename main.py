@@ -1,29 +1,26 @@
-from models_wrapper import load_models
-from data import load_molecular_dataset
-from metrics import evaluate_all
-from utils import save_graphs
-
-import torch
 import os
+from utils import load_graphs
+from metrics import evaluate_all
+from rdkit.Chem import SDMolSupplier, MolToSmiles
 
-SEED = 42
-dataset_name = "QM9"
-n_samples = 1000
 out_dir = "outputs"
 os.makedirs(out_dir, exist_ok=True)
 
-torch.manual_seed(SEED)
-
 if __name__ == "__main__":
-    data = load_molecular_dataset(dataset_name)
+    qm9 = SDMolSupplier('gdb9.sdf', removeHs=False)
+    qm9_smiles = [MolToSmiles(mol) for mol in qm9 if mol is not None]
+    qm9_smiles = set(qm9_smiles)
 
-    models = load_models()
+
+    sampled_g = {'GraphRNN': load_graphs('GraphRNN'),
+                 'CCGVAE': load_graphs('CCGVAE'),
+                 'MolGAN': load_graphs('MolGAN'),
+                 'DiGress': load_graphs('DiGress')}
+
     results = {}
-    for name, model in models.items():
+    for name, graphs in sampled_g.items():
         print(f"\n--- Generating with {name} ---")
-        generated_graphs = model.generate(n_samples)
-        save_graphs(generated_graphs, f"{out_dir}/{name}_gen.pkl")
-        metrics = evaluate_all(generated_graphs, data['test'])
+        metrics = evaluate_all(graphs, qm9_smiles)
         results[name] = metrics
 
     print("\n=== Summary of Results ===")
