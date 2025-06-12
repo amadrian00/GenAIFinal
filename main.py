@@ -7,7 +7,7 @@ out_dir = "outputs"
 os.makedirs(out_dir, exist_ok=True)
 
 if __name__ == "__main__":
-    qm9 = SDMolSupplier('gdb9.sdf', removeHs=False)
+    qm9 = SDMolSupplier('models/DiGress-main/data/qm9/qm9_pyg/raw/gdb9.sdf', removeHs=False)
     qm9_smiles = [MolToSmiles(mol) for mol in qm9 if mol is not None]
     qm9_smiles = set(qm9_smiles)
 
