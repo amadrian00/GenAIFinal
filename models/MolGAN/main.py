@@ -36,7 +36,7 @@ if __name__ == "__main__":
     )
     wgan.fit([np.array(adjacency_tensor, dtype=np.int32), np.array(feature_tensor)], epochs=100, batch_size=64)
 
-    molecules = wgan.sample(batch_size=1000)
+    molecules = wgan.sample(batch_size=10000)
     MolsToGridImage(
         [m for m in molecules if m is not None][:25], molsPerRow=5, subImgSize=(150, 150)
     ).save('generated_mol.png')

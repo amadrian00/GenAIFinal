@@ -24,6 +24,7 @@ The model's code is almost equal to the original one in its respective repositor
 │   │   ├── CCGVAE.py                       # Main script of the CCGVAE model.
 │   │   └── setup.bash                      # Bash for automatic creation of the environment.  
 │   ├── DiGress-main                        # DiGress model
+│   │   ├── output                          # Folder where output is saved for every training run.
 │   │   └── src
 │   │      └── main.py                      # Main script of the CCGVAE model.
 │   ├── graph-generation-master             # GraphRNN model
