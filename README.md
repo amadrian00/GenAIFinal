@@ -52,7 +52,7 @@ The model's code is almost identical to the original in its respective repositor
 
 ## Code
 
-In the project structure section, only the relevant parts were included, there are some other folders and files which are do not need any indication for the scope of this project. 
+In the project structure section, only the relevant parts were included, there are some other folders and files which do not need any indication for the scope of this project. 
 Since the code incorporates components from four different projects, many files are not relevant for this project.
 
 The compiled models come from different repositories, all created in different years with different library versions. 
