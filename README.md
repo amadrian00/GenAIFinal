@@ -109,7 +109,7 @@ CUDA_VISIBLE_DEVICES=1 python3 main.py dataset=qm9
 
 [2]	D. Rigoni, N. Navarin, and A. Sperduti, “Conditional constrained graph variational autoencoders for molecule design,” in 2020 IEEE symposium series on computational intelligence (SSCI), IEEE, 2020, pp. 729–736.
 
-[3]	N. D. Cao and T. Kipf, “MolGAN: An implicit generative model for small molecular graphs,” Sep. 27, 2022, arXiv: arXiv:1805.11973. doi: 10.48550/arXiv.1805.11973.
+[3]	N. D. Cao and T. Kipf, “MolGAN: An implicit generative model for small molecular graphs,” in ICML 2018 workshop on Theoretical Foundations and Applications of Deep Generative Models, 2018.
 
 [4]	C. Vignac, I. Krawczuk, A. Siraudin, B. Wang, V. Cevher, and P. Frossard, “DiGress: Discrete Denoising diffusion for graph generation,” presented at the The Eleventh International Conference on Learning Representations, Sep. 2022.
 

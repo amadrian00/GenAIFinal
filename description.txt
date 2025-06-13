@@ -120,7 +120,7 @@ References
 
 [3] N. D. Cao and T. Kipf, 
     "MolGAN: An implicit generative model for small molecular graphs," 
-    arXiv:1805.11973, Sep. 2022.
+    in ICML 2018 workshop on Theoretical Foundations and Applications of Deep Generative Models, 2018.
 
 [4] C. Vignac et al., 
     "DiGress: Discrete Denoising Diffusion for Graph Generation," 
