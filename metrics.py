@@ -36,10 +36,14 @@ def evaluate_all(smiles):
     validity = len(valid_mols) / 10000
     uniqueness = len(unique_mols) / len(valid_mols) if len(valid_mols)!=0 else 0.0
 
-    novelty = len(unique_mols-qm9_smiles) / len(unique_mols) if len(unique_mols)!=0 else 0.0
+    novel = len(unique_mols-qm9_smiles)
+    novelty = novel / len(unique_mols) if len(unique_mols)!=0 else 0.0
+    novelty_total = novel / 10000
+
 
     return {
         "Validity": validity,
         "Uniqueness": uniqueness,
-        "Novelty": novelty
+        "Novelty": novelty,
+        "Novelty_total": novelty_total
     }
