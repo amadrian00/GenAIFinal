@@ -6,6 +6,9 @@ out_dir = "outputs"
 os.makedirs(out_dir, exist_ok=True)
 
 def format_row_centered(r):
+    """
+    Row centering for printing a well-formatted table.
+    """
     return " | ".join(str(cell).center(width) for cell, width in zip(r, col_widths))
 
 if __name__ == "__main__":

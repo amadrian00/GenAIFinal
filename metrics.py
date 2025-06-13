@@ -8,9 +8,15 @@ qm9_smiles = set(load_smiles('models/ConditionalCGVAE-master/data/qm9.smi', orig
 
 # Eval helpers
 def is_valid(mol):
+    """
+    Checks whether a molecule is valid or not with rdkit library (all logs are dumped)
+    """
     return mol is not None and SanitizeMol(mol, catchErrors=False) == SanitizeFlags.SANITIZE_NONE
 
 def mol_from_graph(adj_matrix):
+    """
+    Takes nx graphs and turns them into rdkit.Chem.rdchem.Mol.
+    """
     if not isinstance(adj_matrix, torch.Tensor):
         raise TypeError(f"Expected torch.Tensor, got {type(adj_matrix)}")
 
@@ -30,6 +36,9 @@ def mol_from_graph(adj_matrix):
 
 
 def evaluate_all(smiles):
+    """
+    Evaluates the validity, uniqueness and novelty of the given list of smiles for the QM9 training set.
+    """
     valid_mols = [s for s in smiles if s !='None' and is_valid(MolFromSmiles(s))]
     unique_mols = set(valid_mols)
 

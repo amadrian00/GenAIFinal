@@ -5,6 +5,9 @@ from rdkit.Chem.rdmolfiles import MolToSmiles
 from rdkit.Chem import RWMol, Atom, BondType, SanitizeMol
 
 def load_smiles(path, special=False, original=False):
+    """
+    Takes a text file path and returns a list with the SMILES codes inside them.
+    """
     smiles = []
     with open(path, 'r') as f:
         for line in f:
@@ -16,6 +19,9 @@ def load_smiles(path, special=False, original=False):
     return smiles
 
 def load_graphs(model):
+    """
+    Load the graphs of the generated molecules by the 4 models.
+    """
     res = None
     if model=='GraphRNN':
         with open('models/graph-generation-master/graphs/GraphRNN_RNN_qm9_4_128_pred_3000_1.dat', "rb") as f:

@@ -1,0 +1,131 @@
+Evaluating the Evolution of Graph Generative Models: Autoregressive, VAE, GAN and Diffusion Approaches
+========================================================================================================
+
+Overview
+--------
+This project compares different generative artificial intelligence methods for graphs, 
+applied specifically to the case of molecule generation.
+
+The model's code is almost identical to the original in its respective repository, 
+with only minimal changes made.
+
+- GraphRNN [1]: https://github.com/JiaxuanYou/graph-generation
+- CCGVAE [2]: https://github.com/drigoni/ConditionalCGVAE/tree/master
+- MolGAN [3]: https://github.com/nicola-decao/MolGAN/tree/master (original paper)
+    - https://keras.io/examples/generative/wgan-graphs/ (code basis)
+- DiGress [4]: https://github.com/cvignac/DiGress/tree/main
+
+
+Project Structure
+-----------------
+
+models/
+├── ConditionalCGVAE-master             # CCGVAE model
+│   ├── data
+│   │   ├── make_dataset.py             # File for constructing the dataset
+│   │   └── qm9.smi                     # QM9 dataset in SMILES form
+│   ├── CCGVAE.py                       # Main script of the CCGVAE model
+│   └── setup.bash                      # Bash for automatic environment creation
+├── DiGress-main                        # DiGress model
+│   ├── data                            # Folder where QM9 dataset is stored
+│   ├── outputs                         # Folder where outputs are saved for each training run
+│   └── src
+│       └── main.py                     # Main script of the DiGress model
+├── graph-generation-master             # GraphRNN model
+│   ├── graphs                          # Generated graphs folder
+│   ├── environment.yml                 # Environment configuration
+│   └── main.py                         # Main script of the GraphRNN model
+└── MolGAN                              # MolGAN model
+    ├── graphs
+    │   └── generated_molecules.sdf     # Saved graphs
+    ├── environment.yml                 # Environment configuration
+    └── main.py                         # Main script of the MolGAN model
+
+description.txt                         # Project documentation in .txt
+main.py                                 # Main script to perform evaluation of the models
+metrics.py                              # Calculation of the validity, uniqueness and novelty metrics. Checks whether or not molecules are valid. And loads molecules from NetworkxX graphs.
+utils.py                                # Functions for loading the generated graphs and obtain the SMILES representations.
+README.md                               # Project documentation
+
+
+Code
+----
+In the project structure section, only the relevant parts were included. Other folders and files 
+exist but are not relevant to the scope of this project.
+
+The compiled models come from different repositories, each created in different years with 
+different library versions. This makes it unfeasible to unify them under a single environment. 
+Therefore, each reviewed model includes its own environment and libraries.
+
+The code for training, fine-tuning, and sampling must be executed within the corresponding 
+environment for each model. Special caution is needed when setting up environments, as even 
+minor changes may break functionality.
+
+Changes to the original code are minimal—mostly adapting functionality due to unavailable libraries 
+or fixing small bugs. However, integrating these diverse models is non-trivial.
+
+CCGVAE’s environment is particularly sensitive to dependency versions. If any error occurs, it is 
+likely due to an incorrect or missing library. A setup script is provided for CCGVAE, but unexpected 
+errors may still arise depending on the local machine.
+
+Given the complexity of running the models and the fact that tests should be run in isolated 
+environments, sampled molecules have been saved for each model. Running `main.py` is enough to 
+calculate the metrics.
+
+
+Usage
+-----
+
+- Use Python 3.9.
+- Install dependencies from `requirements.txt` for the main evaluation environment.
+- Run `main.py` to perform training and evaluation.
+
+GraphRNN:
+---------
+- Create the environment using `environment.yml`.
+- Then run:
+    CUDA_VISIBLE_DEVICES=6 python3 main.py
+
+CCGVAE:
+-------
+- Run `setup.bash` to create the environment.
+- Then run:
+    CUDA_VISIBLE_DEVICES=1 python CCGVAE.py --dataset qm9 --config '{"generation":0, "log_dir":"./results", "use_mask":false}'
+
+MolGAN:
+-------
+- Create the environment using `environment.yml`.
+- Then run:
+    CUDA_VISIBLE_DEVICES=7 python3 main.py
+
+DiGress:
+--------
+- Environment setup is more complex; refer to:
+  https://github.com/cvignac/DiGress/tree/main
+- Then run:
+    CUDA_VISIBLE_DEVICES=1 python3 main.py dataset=qm9
+
+
+References
+----------
+
+[1] J. You, R. Ying, X. Ren, W. Hamilton, and J. Leskovec, 
+    "GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models," 
+    in Proceedings of the 35th ICML, PMLR, 2018.
+
+[2] D. Rigoni, N. Navarin, and A. Sperduti, 
+    "Conditional constrained graph variational autoencoders for molecule design," 
+    in 2020 IEEE SSCI.
+
+[3] N. D. Cao and T. Kipf, 
+    "MolGAN: An implicit generative model for small molecular graphs," 
+    arXiv:1805.11973, Sep. 2022.
+
+[4] C. Vignac et al., 
+    "DiGress: Discrete Denoising Diffusion for Graph Generation," 
+    presented at ICLR, Sep. 2022.
+
+
+Contact
+-------
+amadrian@korea.ac.kr
