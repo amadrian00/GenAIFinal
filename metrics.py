@@ -4,7 +4,7 @@ from rdkit import RDLogger
 from rdkit.Chem import RWMol, SanitizeMol, SanitizeFlags, rdchem, MolFromSmiles
 
 RDLogger.DisableLog('rdApp.*')
-qm9_smiles = set(load_smiles('models/ConditionalCGVAE-master/data/qm9.smi'))
+qm9_smiles = set(load_smiles('models/ConditionalCGVAE-master/data/qm9.smi', original=True))
 
 # Eval helpers
 def is_valid(mol):
@@ -31,12 +31,12 @@ def mol_from_graph(adj_matrix):
 
 def evaluate_all(smiles):
     valid_mols = [s for s in smiles if s !='None' and is_valid(MolFromSmiles(s))]
-
-    unique_mols = set(smiles)
+    unique_mols = set(valid_mols)
 
     validity = len(valid_mols) / 10000
-    uniqueness = len(unique_mols) / len(valid_mols) if valid_mols else 0.0
-    novelty = len([s for s in unique_mols if s not in qm9_smiles]) / len(unique_mols) if unique_mols else 0.0
+    uniqueness = len(unique_mols) / len(valid_mols) if len(valid_mols)!=0 else 0.0
+
+    novelty = len(unique_mols-qm9_smiles) / len(unique_mols) if len(unique_mols)!=0 else 0.0
 
     return {
         "Validity": validity,

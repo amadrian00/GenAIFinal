@@ -67,7 +67,7 @@ class CCGVAE(ChemModel):
             'stop_criterion': 0.01,
             'num_epochs': 10,
             'num_teacher_forcing': 1000,
-            'number_of_generation': 2000,
+            'number_of_generation': 10000,
             'optimization_step': 0,
             'maximum_distance': 50,
             "use_argmax_nodes": False,  # use random sampling or argmax during node sampling

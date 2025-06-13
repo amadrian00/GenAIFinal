@@ -1,16 +1,18 @@
+import re
 import pickle
 import random
 from rdkit.Chem.rdmolfiles import MolToSmiles
 from rdkit.Chem import RWMol, Atom, BondType, SanitizeMol
 
-
-def load_smiles(path):
+def load_smiles(path, special=False, original=False):
     smiles = []
     with open(path, 'r') as f:
         for line in f:
-            parts = line.strip().split()
+            parts = re.findall(r'[^;,]+', line) if special else line.strip().split()
             if parts:
-                smiles.append(parts[0])
+                smiles.extend([p for p in parts])
+    if not original:
+        smiles = smiles[:10000]
     return smiles
 
 def load_graphs(model):
@@ -39,9 +41,8 @@ def load_graphs(model):
             except ValueError:
                 pass
 
-    #elif model=='CCGVAE':
-        #path='/models/ConditionalCGVAE-master'
-        #total = 0
+    elif model=='CCGVAE':
+        res = load_smiles('models/ConditionalCGVAE-master/results/qm9_decoded_generation_0.05_noMask.txt', special=True)
 
     elif model=='MolGAN':
         res = load_smiles('models/MolGAN/graphs/generated_molecules.smi')

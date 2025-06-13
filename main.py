@@ -10,7 +10,7 @@ def format_row_centered(r):
 
 if __name__ == "__main__":
     sampled_g = {'GraphRNN': load_graphs('GraphRNN'),
-                 #'CCGVAE': load_graphs('CCGVAE'),
+                 'CCGVAE': load_graphs('CCGVAE'),
                  'MolGAN': load_graphs('MolGAN'),
                  'DiGress': load_graphs('DiGress')}
 
