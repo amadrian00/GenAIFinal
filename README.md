@@ -41,7 +41,8 @@ The model's code is almost identical to the original in its respective repositor
 │
 ├── description.txt                         # Project documentation in .txt
 ├── main.py                                 # Main script to perform evaluation of the models
-├── metrics.py                              # Calculation of the validity, uniqueness and novelty metrics. Checks whether or not molecules are valid. And loads molecules from NetworkxX graphs.
+├── metrics.py                              # Calculation of the validity, uniqueness and novelty metrics. 
+│                                                Checks whether or not molecules are valid. And loads molecules from NetworkxX graphs.
 ├──utils.py                                 # Functions for loading the generated graphs and obtain the SMILES representations.
 └── README.md                               # Project documentation
 
