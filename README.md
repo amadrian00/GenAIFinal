@@ -85,8 +85,6 @@ CUDA_VISIBLE_DEVICES=6 python3 main.py
 CUDA_VISIBLE_DEVICES=1 python CCGVAE.py --dataset qm9 --config '{"generation":0, "log_dir":"./results", "use_mask":false}'
 ```
 
-- Training is quite costly and time-consuming; therefore, results are presented for a minimally trained model.
-
 ### MolGAN
 - Creating an environment using the `environment.yml` will set up the environment.
 - Then execute:
